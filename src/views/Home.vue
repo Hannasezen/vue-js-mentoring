@@ -1,7 +1,7 @@
 <template>
   <form class="form">
     <Input placeholder="What do you want to watch?" />
-    <Button name="Search" />
+    <Button name="Search" buttonType="secondary" />
   </form>
 </template>
 

@@ -18,5 +18,17 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  name: "Search",
+  name: "submit",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  name: "reset",
+  buttonType: "secondary",
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  name: "+ add movie",
+  buttonType: "tertiary",
 };
