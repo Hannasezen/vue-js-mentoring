@@ -1,5 +1,6 @@
 <template>
   <form class="form">
+    <Input placeholder="What do you want to watch?" />
     <Button name="Search" />
   </form>
 </template>
@@ -7,10 +8,12 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Button from "@/components/atoms/Button.vue";
+import Input from "@/components/atoms/Input.vue";
 
 @Options({
   components: {
     Button,
+    Input,
   },
 })
 export default class Home extends Vue {}
