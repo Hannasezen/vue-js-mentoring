@@ -1,7 +1,7 @@
 import Input from "./Input.vue";
 
 export default {
-  title: "App/Input",
+  title: "App/Atoms/Input",
   component: Input,
   argTypes: {
     type: "name",
