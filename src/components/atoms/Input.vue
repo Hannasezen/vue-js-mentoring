@@ -16,8 +16,7 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .input {
-  display: inline-block;
-  width: auto;
+  width: 100%;
   padding: 16px 20px;
   box-sizing: border-box;
   border: none;
