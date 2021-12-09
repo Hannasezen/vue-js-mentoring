@@ -55,7 +55,7 @@ export default defineComponent({
   }
 
   &--secondary {
-    color: $button-bg-color;
+    color: $font-color-secondary;
     background: transparent;
 
     &:hover {
@@ -67,7 +67,7 @@ export default defineComponent({
     padding: 11px;
     border: none;
     font-weight: 600;
-    color: $button-bg-color;
+    color: $font-color-secondary;
     background: rgba(96, 96, 96, 0.68);
 
     &:hover {

@@ -17,8 +17,8 @@ const Template = (args) => ({
   template: '<Input v-bind="args" />',
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const TextInput = Template.bind({});
+TextInput.args = {
   type: "text",
   placeholder: "What do you want to watch?",
 };
