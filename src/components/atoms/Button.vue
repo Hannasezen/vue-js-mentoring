@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes" type="button">{{ name }}</button>
+  <button :class="classes" :type="type" @click="onClick">{{ name }}</button>
 </template>
 
 <script lang="ts">
@@ -18,6 +18,14 @@ export default defineComponent({
         return ["primary", "secondary", "tertiary"].includes(value);
       },
       default: "primary",
+    },
+    type: {
+      type: String,
+      default: "button",
+    },
+    onClick: {
+      type: Function,
+      required: false,
     },
   },
   computed: {

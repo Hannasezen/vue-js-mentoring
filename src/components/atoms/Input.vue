@@ -1,5 +1,13 @@
 <template>
-  <input :type="type" :placeholder="placeholder" class="input" />
+  <input
+    :type="type"
+    :placeholder="placeholder"
+    :id="name"
+    :name="name"
+    :value="modelValue"
+    @input="handleInputChange"
+    class="input"
+  />
 </template>
 
 <script lang="ts">
@@ -8,7 +16,30 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Input",
   components: {},
-  props: ["type", "placeholder"],
+  props: {
+    type: {
+      type: String,
+      require: false,
+      default: "text",
+    },
+    placeholder: {
+      type: String,
+      require: false,
+      default: "Enter your data",
+    },
+    modelValue: {
+      type: String,
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+  },
+  methods: {
+    handleInputChange(event: InputEvent) {
+      this.$emit("update:modelValue", (event.target as HTMLInputElement).value);
+    },
+  },
 });
 </script>
 
