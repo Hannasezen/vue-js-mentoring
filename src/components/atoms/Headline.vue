@@ -26,11 +26,13 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .title {
+  margin: 0 0 38px;
   font-family: $font-family;
   font-size: $font-size-l;
   line-height: $line-height-l;
   font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 1px;
   color: $font-color;
 }
 </style>

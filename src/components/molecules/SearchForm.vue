@@ -16,7 +16,7 @@ import Button from "../atoms/Button.vue";
 import Input from "../atoms/Input.vue";
 
 export default defineComponent({
-  name: "search-form",
+  name: "SearchForm",
   components: {
     Button,
     Input,
@@ -35,6 +35,7 @@ export default defineComponent({
   methods: {
     submitSearchForm() {
       console.log(this.model);
+      this.model = "";
     },
   },
 });

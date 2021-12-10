@@ -4,8 +4,9 @@ export default {
   title: "App/Atoms/Input",
   component: Input,
   argTypes: {
-    type: "name",
+    type: "type",
     placeholder: "placeholder",
+    name: "name",
   },
 };
 
@@ -21,4 +22,6 @@ export const TextInput = Template.bind({});
 TextInput.args = {
   type: "text",
   placeholder: "What do you want to watch?",
+  name: "film-search",
+  modelValue: "Terminator 1",
 };

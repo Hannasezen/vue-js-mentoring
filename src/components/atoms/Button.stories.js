@@ -5,6 +5,7 @@ export default {
   component: Button,
   argTypes: {
     name: "name",
+    buttonType: "buttonType",
   },
 };
 

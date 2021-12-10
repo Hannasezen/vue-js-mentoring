@@ -28,6 +28,7 @@ export default defineComponent({
 
 .link {
   padding: 5px 5px 5px 0;
+  text-decoration: none;
   color: inherit;
   transition: color ease 0.3s;
 
