@@ -1,5 +1,5 @@
 <template>
-  <div class="holder" v-if="title">
+  <div class="holder" v-if="title" @mouseleave="closeMenu">
     <div class="card">
       <router-link to="/details">
         <img v-if="image" :src="image" :alt="title" class="cover" />
@@ -81,6 +81,9 @@ export default defineComponent({
   methods: {
     toggleContextMenu() {
       this.isContextMenuOpen = !this.isContextMenuOpen;
+    },
+    closeMenu() {
+      this.isContextMenuOpen = false;
     },
     openEditFilmForm() {
       console.log(`edit ${this.title}`);
