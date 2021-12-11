@@ -19,6 +19,7 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .logo {
+  display: inline-block;
   font-family: $font-family;
   font-size: $font-size-m;
   line-height: $line-height-m;
