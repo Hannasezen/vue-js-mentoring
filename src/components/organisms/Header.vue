@@ -3,6 +3,12 @@
     <div class="content">
       <div class="nav">
         <Logo />
+        <Button
+          buttonType="tertiary"
+          name="+ add movie"
+          type="button"
+          :onClick="showModal"
+        />
       </div>
       <div class="search">
         <Headline headline="FIND YOUR MOViE" />
@@ -14,6 +20,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import Button from "../atoms/Button.vue";
 import Logo from "../atoms/Logo.vue";
 import Headline from "../atoms/Headline.vue";
 import SearchForm from "../molecules/SearchForm.vue";
@@ -21,6 +28,7 @@ import SearchForm from "../molecules/SearchForm.vue";
 export default defineComponent({
   name: "Header",
   components: {
+    Button,
     Logo,
     Headline,
     SearchForm,
@@ -29,6 +37,11 @@ export default defineComponent({
     return {
       heroImage: "/images/hero-bg.jpg",
     };
+  },
+  methods: {
+    showModal() {
+      console.log("show modal");
+    },
   },
 });
 </script>
@@ -54,5 +67,6 @@ export default defineComponent({
 .search {
   padding: 0 60px;
   margin: 0 0 150px;
+  text-align: left;
 }
 </style>
