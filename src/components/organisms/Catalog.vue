@@ -4,7 +4,7 @@
       description="Action  Adventure"
       image="/images/covers/pulp-fiction.png"
       title="Pulp Fiction"
-      :releaseDate="2004"
+      :releaseDate="1994"
     />
   </footer>
 </template>
@@ -14,7 +14,7 @@ import { defineComponent } from "vue";
 import FilmCard from "../molecules/FilmCard.vue";
 
 export default defineComponent({
-  name: "Footer",
+  name: "Catalog",
   components: { FilmCard },
 });
 </script>
