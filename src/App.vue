@@ -1,9 +1,5 @@
 <template>
   <div class="app">
-    <div>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/details">About</router-link>
-    </div>
     <router-view />
   </div>
 </template>
@@ -22,5 +18,9 @@
   font-size: $font-size-s;
   line-height: $line-height-s;
   background: $bg-color;
+
+  a {
+    @include link();
+  }
 }
 </style>

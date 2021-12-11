@@ -1,9 +1,11 @@
 <template>
   <div class="logo">
-    <a href="/" class="link">
-      <span class="bold">netflix</span>
-      <span>roulette</span>
-    </a>
+    <div class="link">
+      <router-link to="/">
+        <span class="bold">netflix</span>
+        <span>roulette</span>
+      </router-link>
+    </div>
   </div>
 </template>
 

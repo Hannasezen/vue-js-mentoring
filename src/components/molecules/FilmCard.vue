@@ -1,15 +1,17 @@
 <template>
   <div class="holder">
-    <a href="" class="card">
-      <img :src="image" :alt="title" class="cover" />
-      <div class="header">
-        <h3 class="title">
-          {{ title }}
-        </h3>
-        <div class="date">{{ releaseDate }}</div>
-      </div>
-      <p class="description">{{ description }}</p>
-    </a>
+    <div class="card">
+      <router-link to="/details"
+        ><img :src="image" :alt="title" class="cover" />
+        <div class="header">
+          <h3 class="title">
+            {{ title }}
+          </h3>
+          <div class="date">{{ releaseDate }}</div>
+        </div>
+        <p class="description">{{ description }}</p></router-link
+      >
+    </div>
     <div class="menu" @click="toggleContextMenu">
       <button>
         <svg
@@ -97,7 +99,6 @@ export default defineComponent({
 }
 
 .card {
-  @include link();
   display: block;
   max-width: 323px;
   text-align: left;
