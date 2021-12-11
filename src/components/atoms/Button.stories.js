@@ -5,7 +5,10 @@ export default {
   component: Button,
   argTypes: {
     name: "name",
-    buttonType: "buttonType",
+    buttonType: {
+      options: ["primary", "secondary", "tertiary"],
+      control: { type: "select" },
+    },
   },
 };
 

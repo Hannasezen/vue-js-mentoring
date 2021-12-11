@@ -4,7 +4,10 @@ export default {
   title: "App/Atoms/Input",
   component: Input,
   argTypes: {
-    type: "type",
+    type: {
+      options: ["text", "email", "password"],
+      control: { type: "select" },
+    },
     placeholder: "placeholder",
     name: "name",
   },
