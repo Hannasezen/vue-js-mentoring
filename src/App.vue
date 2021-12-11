@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <div class="nav">
+    <div>
       <router-link to="/">Home</router-link> |
       <router-link to="/details">About</router-link>
     </div>
@@ -14,8 +14,9 @@
 .app {
   min-height: 100vh;
   font-family: $font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   color: $font-color;
   font-size: $font-size-s;
