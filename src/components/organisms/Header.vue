@@ -47,6 +47,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/main.scss";
+
 .header {
   padding: 20px 60px;
   background-position: center;
@@ -54,8 +56,7 @@ export default defineComponent({
 }
 
 .content {
-  max-width: 1000px;
-  margin: 0 auto;
+  @include container();
 }
 
 .nav {

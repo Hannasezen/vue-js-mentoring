@@ -1,16 +1,16 @@
 <template>
-  <div class="holder">
+  <div class="holder" v-if="title">
     <div class="card">
-      <router-link to="/details"
-        ><img :src="image" :alt="title" class="cover" />
+      <router-link to="/details">
+        <img v-if="image" :src="image" :alt="title" class="cover" />
         <div class="header">
           <h3 class="title">
             {{ title }}
           </h3>
           <div class="date">{{ releaseDate }}</div>
         </div>
-        <p class="description">{{ description }}</p></router-link
-      >
+        <p class="description">{{ description }}</p>
+      </router-link>
     </div>
     <div class="menu" @click="toggleContextMenu">
       <button>
@@ -48,8 +48,8 @@
           />
         </svg>
       </button>
-      <button class="option-button">Edit</button>
-      <button class="option-button">Delete</button>
+      <button class="option-button" @click="openEditFilmForm">Edit</button>
+      <button class="option-button" @click="deleteFilm">Delete</button>
     </div>
   </div>
 </template>
@@ -81,6 +81,12 @@ export default defineComponent({
   methods: {
     toggleContextMenu() {
       this.isContextMenuOpen = !this.isContextMenuOpen;
+    },
+    openEditFilmForm() {
+      console.log(`edit ${this.title}`);
+    },
+    deleteFilm() {
+      console.log(`delete ${this.title}`);
     },
   },
 });

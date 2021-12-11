@@ -15,3 +15,8 @@
   cursor: pointer;
   transition: all ease 0.3s;
 }
+
+@mixin container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
