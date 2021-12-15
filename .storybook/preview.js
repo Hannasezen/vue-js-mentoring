@@ -1,3 +1,5 @@
+import "../public/styles/normalize.css"
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +8,17 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+  backgrounds: {
+    default: "black",
+    values: [
+      {
+        name: "black",
+        value: "#232323",
+      },
+      {
+        name: "grey",
+        value: "#424242",
+      },
+    ],
+  },
+};
