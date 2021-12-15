@@ -1,5 +1,21 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <main class="main-content"></main>
+  <Footer />
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Footer from "@/components/organisms/Footer.vue";
+
+export default defineComponent({
+  components: {
+    Footer,
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+.main-content {
+  flex-grow: 1;
+}
+</style>

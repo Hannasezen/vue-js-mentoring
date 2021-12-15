@@ -1,9 +1,11 @@
 <template>
   <div class="logo">
-    <a href="/" class="link">
-      <span class="bold">netflix</span>
-      <span>roulette</span>
-    </a>
+    <div class="link">
+      <router-link to="/">
+        <span class="bold">netflix</span>
+        <span>roulette</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .logo {
+  display: inline-block;
   font-family: $font-family;
   font-size: $font-size-m;
   line-height: $line-height-m;
