@@ -69,10 +69,19 @@ export default defineComponent({
 .catalog {
   @include container();
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 60px;
+  grid-template-columns: 1fr;
   row-gap: 50px;
   padding: 24px;
   text-align: center;
+
+  @media screen and (min-width: 425px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 60px;
+  }
 }
 </style>

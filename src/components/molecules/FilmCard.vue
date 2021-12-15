@@ -109,9 +109,12 @@ export default defineComponent({
 
 .card {
   display: block;
-  max-width: 323px;
   text-align: left;
   cursor: pointer;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 323px;
+  }
 }
 
 .header {

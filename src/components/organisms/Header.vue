@@ -50,9 +50,13 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .header {
-  padding: 20px 60px;
+  padding: 20px 20px 60px;
   background-position: center;
   background-size: cover;
+
+  @media screen and (min-width: 1024px) {
+    padding: 20px 60px;
+  }
 }
 
 .content {
@@ -66,8 +70,12 @@ export default defineComponent({
 }
 
 .search {
-  padding: 0 60px;
-  margin: 0 0 150px;
+  margin: 0 0 60px;
   text-align: left;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0 60px;
+    margin: 0 0 150px;
+  }
 }
 </style>

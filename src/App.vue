@@ -22,5 +22,10 @@
   a {
     @include link();
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: $font-size-s;
+    line-height: $line-height-s;
+  }
 }
 </style>

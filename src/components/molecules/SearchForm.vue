@@ -45,10 +45,28 @@ export default defineComponent({
 .form {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  input {
+    margin: 0 0 12px;
+
+    @media screen and (min-width: 768px) {
+      margin: 0;
+    }
+  }
 
   button {
     min-width: 233px;
-    margin: 0 0 0 12px;
+    margin: 0;
+
+    @media screen and (min-width: 768px) {
+      margin: 0 0 0 12px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
   }
 }
 </style>
