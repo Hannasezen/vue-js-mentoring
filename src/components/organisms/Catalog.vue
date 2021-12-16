@@ -7,9 +7,10 @@
         :activeFilter="activeFilter"
       />
     </div>
-    <div v-show="filmsCount" class="films-count">
+    <div v-if="filmsCount" class="films-count">
       {{ filmsCount }} movies found
     </div>
+    <div v-else class="no-films-count">No movies found</div>
     <div class="catalog">
       <FilmCard
         v-for="film in films"
@@ -78,7 +79,7 @@ export default defineComponent({
   components: { FilmCard, Filters },
   data() {
     return {
-      filters: ["all", "documentary", "comedy", "horror", "crime"],
+      filters: ["all", "documentary", "comedy", "horror", "crime", "drama"],
       films: mock_data,
       activeFilter: "all",
     };
