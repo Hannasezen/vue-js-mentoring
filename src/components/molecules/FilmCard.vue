@@ -149,6 +149,7 @@ export default defineComponent({
   align-self: start;
   min-width: 66px;
   padding: 2px 7px 5px;
+  margin: 0 0 0 12px;
   border: 1px solid $shadow-grey;
   box-sizing: border-box;
   border-radius: 4px;
