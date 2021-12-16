@@ -1,8 +1,25 @@
 <template>
   <div class="app">
     <router-view />
+    <main class="main-content">
+      <Catalog />
+      <Footer />
+    </main>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Catalog from "@/components/organisms/Catalog.vue";
+import Footer from "@/components/organisms/Footer.vue";
+
+export default defineComponent({
+  components: {
+    Catalog,
+    Footer,
+  },
+});
+</script>
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";
@@ -27,5 +44,9 @@
     font-size: $font-size-s;
     line-height: $line-height-s;
   }
+}
+
+.main-content {
+  flex-grow: 1;
 }
 </style>
