@@ -4,7 +4,7 @@
       v-for="filter in filters"
       :key="filter"
       :filter="filter"
-      @click="() => click(filter)"
+      @click="() => filterFilms(filter)"
       :activeFilter="activeFilter"
     />
   </div>
@@ -22,8 +22,9 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: true,
     },
-    click: {
+    filterFilms: {
       type: Function,
+      default: (filter = "all"): void => undefined,
     },
     activeFilter: {
       type: String,

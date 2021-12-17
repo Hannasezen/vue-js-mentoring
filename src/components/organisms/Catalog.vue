@@ -3,7 +3,7 @@
     <div class="controls">
       <Filters
         :filters="filters"
-        :click="filterFilms"
+        :filterFilms="filterFilms"
         :activeFilter="activeFilter"
       />
     </div>

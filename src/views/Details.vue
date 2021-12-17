@@ -19,7 +19,7 @@
 
         <div class="numbers">
           <span class="date">1994</span>
-          <span class="duration">154</span>
+          <span class="duration">{{ filmDuration }}</span>
         </div>
         <div class="description">
           Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta)
@@ -45,13 +45,24 @@ import Search from "@/components/icons/SearchIcon.vue";
 export default defineComponent({
   name: "Details",
   components: { Logo, Search },
+  data() {
+    return {
+      duration: 154,
+    };
+  },
   props: {
     title: {
       type: String,
     },
   },
-  mounted() {
-    console.log(this);
+  computed: {
+    filmDuration() {
+      if (!this.duration) return "";
+
+      const hours = Math.trunc(this.duration / 60);
+      const minutes = this.duration % 60;
+      return `${hours}h${minutes ? ` ${minutes}min` : ""}`;
+    },
   },
 });
 </script>
@@ -73,6 +84,11 @@ export default defineComponent({
 .film-details {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .image {
