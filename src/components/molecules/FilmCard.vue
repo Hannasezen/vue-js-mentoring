@@ -1,7 +1,7 @@
 <template>
   <div class="holder" v-if="title" @mouseleave="closeMenu">
     <div class="card">
-      <router-link to="/details">
+      <router-link :to="{ name: 'Details', params: { title } }">
         <img v-if="image" :src="image" :alt="title" class="cover" />
         <div class="header">
           <h3 class="title">
@@ -105,16 +105,16 @@ export default defineComponent({
   button {
     @include button();
   }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 323px;
+  }
 }
 
 .card {
   display: block;
   text-align: left;
   cursor: pointer;
-
-  @media screen and (min-width: 1024px) {
-    max-width: 323px;
-  }
 }
 
 .header {

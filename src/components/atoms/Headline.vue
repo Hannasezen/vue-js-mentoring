@@ -28,8 +28,8 @@ export default defineComponent({
 .title {
   margin: 0 0 38px;
   font-family: $font-family;
-  font-size: $font-size-l;
-  line-height: $line-height-l;
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;

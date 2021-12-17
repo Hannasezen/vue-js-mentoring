@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import Filter from "../atoms/Filter.vue";
 
 export default defineComponent({
@@ -19,7 +19,7 @@ export default defineComponent({
   components: { Filter },
   props: {
     filters: {
-      type: Array as Array<string>,
+      type: Array as PropType<string[]>,
       required: true,
     },
     click: {
