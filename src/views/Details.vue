@@ -6,7 +6,7 @@
     </header>
     <div class="film-details">
       <div class="image">
-        <img src="/images/covers/bohemian.png" alt="film" />
+        <img source="title" src="/images/covers/pulp-fiction.png" alt="film" />
       </div>
       <div class="content">
         <div class="title">

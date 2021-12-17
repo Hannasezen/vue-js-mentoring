@@ -2,7 +2,13 @@
   <div class="holder" v-if="title" @mouseleave="closeMenu">
     <div class="card">
       <router-link :to="{ name: 'Details', params: { title } }">
-        <img v-if="image" :src="image" :alt="title" class="cover" />
+        <img
+          v-lazy-load
+          v-if="image"
+          :data-url="image"
+          :alt="title"
+          class="cover"
+        />
         <div class="header">
           <h3 class="title">
             {{ title }}
