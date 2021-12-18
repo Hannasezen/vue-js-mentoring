@@ -1,12 +1,12 @@
 <template>
   <input
+    :id="name"
     :type="type"
     :placeholder="placeholder"
-    :id="name"
     :name="name"
     :value="modelValue"
-    @input="handleInputChange"
     class="input"
+    @input="handleInputChange"
   />
 </template>
 

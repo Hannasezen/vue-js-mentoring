@@ -1,10 +1,10 @@
 <template>
-  <div class="holder" v-if="title" @mouseleave="closeMenu">
+  <div v-if="title" class="holder" @mouseleave="closeMenu">
     <div class="card">
       <router-link :to="{ name: 'Details', params: { title } }">
         <img
-          v-lazy-load
           v-if="image"
+          v-lazy-load
           :data-url="image"
           :alt="title"
           class="cover"
@@ -33,8 +33,8 @@
         </svg>
       </button>
     </div>
-    <div class="context-menu" v-show="isContextMenuOpen">
-      <button @click="toggleContextMenu" class="close-button">
+    <div v-show="isContextMenuOpen" class="context-menu">
+      <button class="close-button" @click="toggleContextMenu">
         <svg
           width="12"
           height="13"

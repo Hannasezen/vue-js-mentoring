@@ -1,10 +1,10 @@
 <template>
   <form class="form" @submit.prevent="submitSearchForm">
     <Input
+      v-model="model"
       :type="input.type"
       :placeholder="input.placeholder"
       :name="input.name"
-      v-model="model"
     />
     <Button type="submit" :name="buttonName" />
   </form>
