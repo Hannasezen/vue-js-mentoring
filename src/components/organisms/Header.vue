@@ -11,7 +11,7 @@
         />
       </div>
       <div class="search">
-        <Headline headline="FIND YOUR MOViE" />
+        <Headline headline="Find your movie" :level="1" :class="h1" />
         <SearchForm />
       </div>
     </div>
@@ -20,7 +20,6 @@
 
 <script>
 import { defineComponent } from "vue";
-import Button from "../atoms/Button.vue";
 import Logo from "../atoms/Logo.vue";
 import Headline from "../atoms/Headline.vue";
 import SearchForm from "../molecules/SearchForm.vue";
@@ -28,7 +27,6 @@ import SearchForm from "../molecules/SearchForm.vue";
 export default defineComponent({
   name: "Header",
   components: {
-    Button,
     Logo,
     Headline,
     SearchForm,

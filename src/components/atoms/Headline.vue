@@ -1,5 +1,5 @@
 <template>
-  <h1 :class="className">{{ headline }}</h1>
+  <component :is="tagName" :class="className">{{ headline }}</component>
 </template>
 
 <script lang="ts">
@@ -11,11 +11,23 @@ export default defineComponent({
     headline: {
       type: String,
     },
+    level: {
+      type: Number,
+      default: 1,
+    },
+    class: {
+      type: String,
+      required: false,
+    },
   },
   computed: {
+    tagName() {
+      return `h${this.$props.level}`;
+    },
     className() {
       return {
         title: true,
+        [this.$props.class]: this.$props.class,
       };
     },
   },
@@ -28,11 +40,14 @@ export default defineComponent({
 .title {
   margin: 0 0 38px;
   font-family: $font-family;
-  font-size: $font-size-xl;
-  line-height: $line-height-xl;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 1px;
   color: $font-color;
+}
+
+.h1 {
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
+  letter-spacing: 1px;
 }
 </style>
