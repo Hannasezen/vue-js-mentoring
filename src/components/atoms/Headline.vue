@@ -12,8 +12,8 @@ export default defineComponent({
       type: String,
     },
     level: {
-      type: Number,
-      default: 1,
+      type: String,
+      default: "1",
     },
     class: {
       type: String,
@@ -27,7 +27,7 @@ export default defineComponent({
     className() {
       return {
         title: true,
-        [this.$props.class]: this.$props.class,
+        [`${this.$props.class}`]: this.$props.class,
       };
     },
   },

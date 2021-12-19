@@ -3,15 +3,10 @@
     <div class="content">
       <div class="nav">
         <Logo />
-        <Button
-          buttonType="tertiary"
-          name="+ add movie"
-          type="button"
-          :onClick="showModal"
-        />
+        <AddFilmModal />
       </div>
       <div class="search">
-        <Headline headline="Find your movie" :level="1" :class="h1" />
+        <Headline headline="Find your movie" level="1" class="h1" />
         <SearchForm />
       </div>
     </div>
@@ -20,6 +15,7 @@
 
 <script>
 import { defineComponent } from "vue";
+import AddFilmModal from "../molecules/AddFilmModal.vue";
 import Logo from "../atoms/Logo.vue";
 import Headline from "../atoms/Headline.vue";
 import SearchForm from "../molecules/SearchForm.vue";
@@ -27,6 +23,7 @@ import SearchForm from "../molecules/SearchForm.vue";
 export default defineComponent({
   name: "Header",
   components: {
+    AddFilmModal,
     Logo,
     Headline,
     SearchForm,
