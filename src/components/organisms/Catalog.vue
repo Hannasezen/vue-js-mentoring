@@ -109,18 +109,6 @@ export default defineComponent({
 .container {
   @include container();
   padding: 0 20px 70px;
-
-  &::before {
-    content: "";
-    position: relative;
-    left: -20px;
-    right: -20px;
-    width: calc(100% + 40px);
-    height: 10px;
-    background: #888888;
-    opacity: 0.5;
-    display: block;
-  }
 }
 
 .controls {

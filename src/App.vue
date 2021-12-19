@@ -48,5 +48,17 @@ export default defineComponent({
 
 .main-content {
   flex-grow: 1;
+
+  &::before {
+    content: "";
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 10px;
+    background: #888888;
+    opacity: 0.5;
+    display: block;
+  }
 }
 </style>
