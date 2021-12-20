@@ -3,9 +3,9 @@
     <div class="card">
       <router-link :to="{ name: 'Details', params: { title } }">
         <img
-          v-if="image"
+          v-if="poster_path"
           v-lazy-load
-          :data-url="image"
+          :data-url="poster_path"
           :alt="title"
           class="cover"
         />
@@ -13,9 +13,9 @@
           <h3 class="title">
             {{ title }}
           </h3>
-          <div class="date">{{ releaseDate }}</div>
+          <div class="date">{{ release_date }}</div>
         </div>
-        <p class="description">{{ description }}</p>
+        <p class="description">{{ overview }}</p>
       </router-link>
     </div>
     <div class="menu" @click="toggleContextMenu">
@@ -74,13 +74,13 @@ export default defineComponent({
     title: {
       type: String,
     },
-    description: {
+    overview: {
       type: String,
     },
-    releaseDate: {
-      type: Number,
+    release_date: {
+      type: String,
     },
-    image: {
+    poster_path: {
       type: String,
     },
   },

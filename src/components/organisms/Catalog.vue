@@ -3,102 +3,69 @@
     <div class="controls">
       <Filters
         :filters="filters"
-        :filterFilms="filterFilms"
+        :filterFilms="filterMovies"
         :activeFilter="activeFilter"
       />
     </div>
-    <div v-if="filmsCount" class="films-count">
-      {{ filmsCount }} movies found
+    <div v-if="moviesCount" class="films-count">
+      {{ moviesCount }} movies found
     </div>
     <div v-else class="no-films-count">No movies found</div>
     <div class="catalog">
       <FilmCard
-        v-for="film in films"
-        :key="film.title"
-        :title="film.title"
-        :description="film.description"
-        :image="film.image"
-        :releaseDate="film.releaseDate"
+        v-for="movie in movies"
+        :key="movie.title"
+        :title="movie.title"
+        :overview="movie.overview"
+        :poster_path="movie.poster_path"
+        :release_date="movie.release_date"
       />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import FilmCard from "../molecules/FilmCard.vue";
 import Filters from "../molecules/Filters.vue";
-
-const mock_data = [
-  {
-    title: "Pulp Fiction",
-    description: "Action & Adventure",
-    releaseDate: 2004,
-    image: "/images/covers/pulp-fiction.png",
-    genre: "crime",
-  },
-  {
-    title: "Bohemian Rhapsody",
-    description: "Drama, Biography, Music",
-    releaseDate: 2003,
-    image: "/images/covers/bohemian.png",
-    genre: "documentary",
-  },
-  {
-    title: "Kill Bill: Vol 2",
-    description: "Oscar winning Movie",
-    releaseDate: 1994,
-    image: "/images/covers/kill-bill.png",
-    genre: "horror",
-  },
-  {
-    title: "Avengers: War of Infinity",
-    description: "Action & Adventure",
-    releaseDate: 2004,
-    image: "/images/covers/avengers.png",
-    genre: "comedy",
-  },
-  {
-    title: "Inception",
-    description: "Action & Adventure",
-    releaseDate: 2003,
-    image: "/images/covers/inception.png",
-    genre: "comedy",
-  },
-  {
-    title: "Reservoir dogs",
-    description: "Oscar winning Movie",
-    releaseDate: 1994,
-    image: "/images/covers/dogs.png",
-    genre: "horror",
-  },
-];
+import movies from "../../../data/movies.json";
 
 export default defineComponent({
   name: "Catalog",
   components: { FilmCard, Filters },
   data() {
     return {
-      filters: ["all", "documentary", "comedy", "horror", "crime", "drama"],
-      films: mock_data,
+      filters: [] as Array<string>,
+      movies: movies,
       activeFilter: "all",
     };
   },
   computed: {
-    filmsCount() {
-      return this.films?.length;
+    moviesCount(): number {
+      return this.movies?.length;
     },
   },
   methods: {
-    filterFilms(genre = "all") {
-      this.films = mock_data;
+    filterMovies(genre = "all"): void {
+      this.movies = movies;
       this.activeFilter = "all";
 
       if (genre !== "all") {
-        this.films = this.films.filter((film) => film.genre === genre);
+        this.movies = this.movies.filter((movie) =>
+          movie.genres.includes(genre)
+        );
         this.activeFilter = genre;
       }
     },
+  },
+  mounted() {
+    const filters: Set<string> = new Set();
+    movies.map((movie) => {
+      movie.genres.map((genre) => {
+        filters.add(genre);
+      });
+    });
+    this.filters = ["all", ...filters];
   },
 });
 </script>
