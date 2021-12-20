@@ -9,11 +9,12 @@
           :alt="title"
           class="cover"
         />
+        <img v-else class="cover" src="/images/covers/coming-soon.jpg" />
         <div class="header">
           <h3 class="title">
             {{ title }}
           </h3>
-          <div class="date">{{ release_date }}</div>
+          <div v-show="release" class="date">{{ release }}</div>
         </div>
         <p class="description">{{ overview }}</p>
       </router-link>
@@ -84,6 +85,11 @@ export default defineComponent({
       type: String,
     },
   },
+  computed: {
+    release(): string {
+      return this.$props.release_date?.substring(0, 4) || "";
+    },
+  },
   methods: {
     toggleContextMenu() {
       this.isContextMenuOpen = !this.isContextMenuOpen;
@@ -142,6 +148,10 @@ export default defineComponent({
   line-height: 17px;
   font-weight: 500;
   opacity: 0.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .cover {
@@ -149,6 +159,8 @@ export default defineComponent({
   width: 100%;
   object-fit: cover;
   margin: 0 0 22px;
+
+  aspect-ratio: 323 / 450;
 }
 
 .date {
