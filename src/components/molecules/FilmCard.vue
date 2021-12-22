@@ -1,15 +1,22 @@
 <template>
-  <div class="holder" v-if="title" @mouseleave="closeMenu">
+  <div v-if="title" class="holder" @mouseleave="closeMenu">
     <div class="card">
-      <router-link to="/details">
-        <img v-if="image" :src="image" :alt="title" class="cover" />
+      <router-link :to="{ name: 'Details', params: { title } }">
+        <img
+          v-if="poster_path"
+          v-lazy-load
+          :data-url="poster_path"
+          :alt="title"
+          class="cover"
+        />
+        <img v-else class="cover" src="/images/covers/coming-soon.jpg" />
         <div class="header">
           <h3 class="title">
             {{ title }}
           </h3>
-          <div class="date">{{ releaseDate }}</div>
+          <div v-show="release" class="date">{{ release }}</div>
         </div>
-        <p class="description">{{ description }}</p>
+        <p class="description">{{ overview }}</p>
       </router-link>
     </div>
     <div class="menu" @click="toggleContextMenu">
@@ -27,8 +34,8 @@
         </svg>
       </button>
     </div>
-    <div class="context-menu" v-show="isContextMenuOpen">
-      <button @click="toggleContextMenu" class="close-button">
+    <div v-show="isContextMenuOpen" class="context-menu">
+      <button class="close-button" @click="toggleContextMenu">
         <svg
           width="12"
           height="13"
@@ -68,14 +75,19 @@ export default defineComponent({
     title: {
       type: String,
     },
-    description: {
+    overview: {
       type: String,
     },
-    releaseDate: {
-      type: Number,
-    },
-    image: {
+    release_date: {
       type: String,
+    },
+    poster_path: {
+      type: String,
+    },
+  },
+  computed: {
+    release(): string {
+      return this.$props.release_date?.substring(0, 4) || "";
     },
   },
   methods: {
@@ -105,11 +117,14 @@ export default defineComponent({
   button {
     @include button();
   }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 323px;
+  }
 }
 
 .card {
   display: block;
-  max-width: 323px;
   text-align: left;
   cursor: pointer;
 }
@@ -133,6 +148,10 @@ export default defineComponent({
   line-height: 17px;
   font-weight: 500;
   opacity: 0.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .cover {
@@ -140,12 +159,15 @@ export default defineComponent({
   width: 100%;
   object-fit: cover;
   margin: 0 0 22px;
+
+  aspect-ratio: 323 / 450;
 }
 
 .date {
   align-self: start;
   min-width: 66px;
   padding: 2px 7px 5px;
+  margin: 0 0 0 12px;
   border: 1px solid $shadow-grey;
   box-sizing: border-box;
   border-radius: 4px;
