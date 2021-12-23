@@ -1,13 +1,13 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
-import modalPlugin from "./plugins/abstractModal";
-import LazyLoadImage from "./directives/LazyLoadImage";
+import { store, key } from "./store";
+import plugins from "./plugins";
+import LazyLoadImage from "./directives/lazy-load-images";
 
 createApp(App)
   .directive("lazy-load", LazyLoadImage)
-  .use(store)
+  .use(store, key)
   .use(router)
-  .use(modalPlugin)
+  .use(plugins)
   .mount("#app");

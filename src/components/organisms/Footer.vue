@@ -4,7 +4,7 @@
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import Logo from "../atoms/Logo.vue";
 export default defineComponent({

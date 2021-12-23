@@ -1,7 +1,12 @@
 <template>
   <div v-if="title" class="holder" @mouseleave="closeMenu">
     <div class="card">
-      <router-link :to="{ name: 'Details', params: { title } }">
+      <router-link
+        :to="{
+          name: 'Details',
+          params: { title },
+        }"
+      >
         <img
           v-if="poster_path"
           v-lazy-load

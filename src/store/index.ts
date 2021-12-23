@@ -1,8 +1,11 @@
-import { createStore } from "vuex";
+import { InjectionKey } from "vue";
+import { createStore, Store } from "vuex";
+import { State, state } from "./state";
+import { getters } from "./getters";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+export const key: InjectionKey<Store<State>> = Symbol();
+
+export const store = createStore<State>({
+  state,
+  getters,
 });
