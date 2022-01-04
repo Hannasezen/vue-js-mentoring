@@ -6,32 +6,22 @@
     </header>
     <div class="film-details">
       <div class="image">
-        <img source="title" src="/images/covers/pulp-fiction.png" alt="film" />
+        <img source="title" :src="movie.poster_path" :alt="movie.title" />
       </div>
       <div class="content">
         <div class="title">
           <div class="name">
-            Pulp Fiction
-            <span class="score">8.9</span>
+            {{ movie.title }}
+            <span class="score">{{ score }}</span>
           </div>
-          <div class="genre">Action &#038; Adventure</div>
+          <div class="genre">{{ movieGenres }}</div>
         </div>
 
         <div class="numbers">
-          <span class="date">1994</span>
+          <span class="date">{{ getYear(movie.release_date) }}</span>
           <span class="duration">{{ filmDuration }}</span>
         </div>
-        <div class="description">
-          Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta)
-          are two hit men who are out to retrieve a suitcase stolen from their
-          employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also
-          asked Vincent to take his wife Mia (Uma Thurman) out a few days later
-          when Wallace himself will be out of town. Butch Coolidge (Bruce
-          Willis) is an aging boxer who is paid by Wallace to lose his fight.
-          The lives of these seemingly unrelated people are woven together
-          comprising of a series of funny, bizarre and uncalled-for
-          incidents.—Soumitra
-        </div>
+        <div class="description">{{ movie.overview }}</div>
       </div>
     </div>
   </div>
@@ -39,30 +29,63 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "vuex";
+import { key } from "../store";
 import Logo from "@/components/atoms/Logo.vue";
 import Search from "@/components/icons/SearchIcon.vue";
+import { Movie } from "@/types/movies";
 
 export default defineComponent({
   name: "Details",
   components: { Logo, Search },
   data() {
     return {
-      duration: 154,
+      title: this.$route.params.title,
+      movie: {
+        id: 0,
+        title: "",
+        tagline: "",
+        vote_average: 0,
+        vote_count: 0,
+        release_date: "",
+        poster_path: "",
+        overview: "",
+        budget: 0,
+        revenue: 0,
+        genres: [""],
+        runtime: 0,
+      },
+      store: useStore(key),
     };
   },
-  props: {
-    title: {
-      type: String,
+  computed: {
+    filmDuration(): string {
+      if (!this.movie?.runtime) return "";
+      const hours = Math.trunc(this.movie?.runtime / 60);
+      const minutes = this.movie?.runtime % 60;
+      return `${hours}h${minutes ? ` ${minutes}min` : " 0min"}`;
+    },
+    movieGenres(): string {
+      return this.movie?.genres?.join(" & ") || "";
+    },
+    score(): string {
+      return this.movie.vote_average?.toFixed(1) || "0.0";
     },
   },
-  computed: {
-    filmDuration() {
-      if (!this.duration) return "";
-
-      const hours = Math.trunc(this.duration / 60);
-      const minutes = this.duration % 60;
-      return `${hours}h${minutes ? ` ${minutes}min` : ""}`;
+  methods: {
+    getMovie(): void {
+      const movie = this.store.getters.getMovie(this.title);
+      if (movie) {
+        this.movie = movie;
+      }
     },
+  },
+  created() {
+    this.getMovie();
+  },
+  updated() {
+    this.title = `${this.$route.params.title}`;
+    this.getMovie();
   },
 });
 </script>
@@ -122,6 +145,7 @@ export default defineComponent({
 }
 
 .score {
+  flex-shrink: 0;
   display: inline-flex;
   justify-content: center;
   align-items: center;

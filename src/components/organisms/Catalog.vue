@@ -26,9 +26,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "vuex";
+import { key } from "../../store";
 import FilmCard from "../molecules/FilmCard.vue";
 import Filters from "../molecules/Filters.vue";
-import movies from "../../../data/movies.json";
+import { Movie } from "@/types/movies";
 
 export default defineComponent({
   name: "Catalog",
@@ -36,8 +38,9 @@ export default defineComponent({
   data() {
     return {
       filters: [] as Array<string>,
-      movies: movies,
+      movies: [] as Array<Movie>,
       activeFilter: "all",
+      store: useStore(key),
     };
   },
   computed: {
@@ -47,21 +50,23 @@ export default defineComponent({
   },
   methods: {
     filterMovies(genre = "all"): void {
-      this.movies = movies;
+      this.movies = this.store.state.movies;
       this.activeFilter = "all";
 
       if (genre !== "all") {
-        this.movies = this.movies.filter((movie) =>
-          movie.genres.includes(genre)
+        this.movies = this.movies.filter((movie: Movie) =>
+          movie.genres?.includes(genre)
         );
         this.activeFilter = genre;
       }
     },
   },
   mounted() {
+    this.movies = this.store.state.movies;
+
     const filters: Set<string> = new Set();
-    movies.map((movie) => {
-      movie.genres.map((genre) => {
+    this.movies.map((movie: Movie) => {
+      movie.genres?.map((genre) => {
         filters.add(genre);
       });
     });
