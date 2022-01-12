@@ -49,20 +49,12 @@ export default defineComponent({
     },
   },
   methods: {
-    filterMovies(genre = "all"): void {
-      this.movies = this.store.state.movies;
-      this.activeFilter = "all";
-
-      if (genre !== "all") {
-        this.movies = this.movies.filter((movie: Movie) =>
-          movie.genres?.includes(genre)
-        );
-        this.activeFilter = genre;
-      }
+    filterMovies(genre: string): void {
+      this.movies = this.store.getters.getFilteredMovies(genre);
     },
   },
   mounted() {
-    this.movies = this.store.state.movies;
+    this.movies = this.store.getters.getMovies;
 
     const filters: Set<string> = new Set();
     this.movies.map((movie: Movie) => {
@@ -71,6 +63,9 @@ export default defineComponent({
       });
     });
     this.filters = ["all", ...filters];
+  },
+  updated() {
+    console.log("updated");
   },
 });
 </script>

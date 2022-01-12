@@ -33,7 +33,6 @@ import { useStore } from "vuex";
 import { key } from "../store";
 import Logo from "@/components/atoms/Logo.vue";
 import Search from "@/components/icons/SearchIcon.vue";
-import { Movie } from "@/types/movies";
 
 export default defineComponent({
   name: "Details",
