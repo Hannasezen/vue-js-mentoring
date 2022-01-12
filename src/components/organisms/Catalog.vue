@@ -3,7 +3,7 @@
     <div class="controls">
       <Filters
         :filters="filters"
-        :filterFilms="filterMovies"
+        :filterFilms="setActiveFilter"
         :activeFilter="activeFilter"
       />
     </div>
@@ -37,35 +37,25 @@ export default defineComponent({
   components: { FilmCard, Filters },
   data() {
     return {
-      filters: [] as Array<string>,
-      movies: [] as Array<Movie>,
       activeFilter: "all",
       store: useStore(key),
     };
   },
   computed: {
+    movies(): Movie[] {
+      return this.store.getters.getFilteredMovies(this.activeFilter);
+    },
     moviesCount(): number {
       return this.movies?.length;
     },
-  },
-  methods: {
-    filterMovies(genre: string): void {
-      this.movies = this.store.getters.getFilteredMovies(genre);
+    filters(): string[] {
+      return this.store.getters.getFilters;
     },
   },
-  mounted() {
-    this.movies = this.store.getters.getMovies;
-
-    const filters: Set<string> = new Set();
-    this.movies.map((movie: Movie) => {
-      movie.genres?.map((genre) => {
-        filters.add(genre);
-      });
-    });
-    this.filters = ["all", ...filters];
-  },
-  updated() {
-    console.log("updated");
+  methods: {
+    setActiveFilter(genre: string): void {
+      this.activeFilter = genre;
+    },
   },
 });
 </script>
