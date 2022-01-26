@@ -40,7 +40,6 @@ export default defineComponent({
 .filters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 
   div {
     margin: 0 15px;

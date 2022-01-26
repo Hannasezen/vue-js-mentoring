@@ -3,18 +3,23 @@ import { State } from "./state";
 import { Movie } from "../types/movies";
 
 export const enum MutationTypes {
+  GET_MOVIES = "GET_MOVIES",
   ADD_MOVIE = "ADD_MOVIE",
   REMOVE_MOVIE = "REMOVE_MOVIE",
   EDIT_MOVIE = "EDIT_MOVIE",
 }
 
 export type Mutations<S = State> = {
+  [MutationTypes.GET_MOVIES](state: S, payload: Array<Movie>): void;
   [MutationTypes.ADD_MOVIE](state: S, payload: Movie): void;
   [MutationTypes.REMOVE_MOVIE](state: S, payload: number): void;
   [MutationTypes.EDIT_MOVIE](state: S, payload: Movie): void;
 };
 
 export const mutations: MutationTree<State> & Mutations = {
+  [MutationTypes.GET_MOVIES](state, payload: Array<Movie>) {
+    state.movies = payload;
+  },
   [MutationTypes.ADD_MOVIE](state, payload: Movie) {
     state.movies.push(payload);
   },

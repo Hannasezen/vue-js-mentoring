@@ -10,6 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "vuex";
+import { key } from "./store";
 import Catalog from "@/components/organisms/Catalog.vue";
 import Footer from "@/components/organisms/Footer.vue";
 
@@ -17,6 +19,14 @@ export default defineComponent({
   components: {
     Catalog,
     Footer,
+  },
+  data() {
+    return {
+      store: useStore(key),
+    };
+  },
+  mounted() {
+    this.store.dispatch("GET_MOVIES");
   },
 });
 </script>

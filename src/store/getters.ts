@@ -18,6 +18,19 @@ export const getters: GetterTree<State, State> & Getters = {
   getFilteredMovies: (state) => (genre) => {
     return genre === "all" || undefined
       ? state.movies
-      : state.movies.filter((movie) => movie.genres?.includes(genre));
+      : state.movies.filter((movie) =>
+          movie.genres
+            ?.map((genre) => genre.toLowerCase())
+            .includes(genre.toLowerCase())
+        );
+  },
+  getFilters: (state): string[] => {
+    const filters: Set<string> = new Set();
+    state.movies.map((movie: Movie) => {
+      movie.genres?.map((genre) => {
+        filters.add(genre);
+      });
+    });
+    return ["all", ...filters];
   },
 };
