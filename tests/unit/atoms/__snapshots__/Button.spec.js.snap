@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button.vue renders properly 1`] = `
+<button
+  class="button button--primary"
+  type="submit"
+>
+  Button
+</button>
+`;
