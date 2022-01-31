@@ -2,7 +2,7 @@ import { ActionContext, ActionTree } from "vuex";
 import { State } from "./state";
 import { MutationTypes, Mutations } from "./mutations";
 import { Movie } from "../types/movies";
-import { axiosClient, getMovies } from "../services/api";
+import { GetMoviesParams, getMovies } from "../services/api";
 
 export enum ActionTypes {
   GET_MOVIES = "GET_MOVIES",
@@ -19,7 +19,7 @@ type AugmentedActionContext = {
 export interface Actions {
   [ActionTypes.GET_MOVIES](
     { commit }: AugmentedActionContext,
-    payload: Array<Movie>
+    payload: GetMoviesParams
   ): void;
   [ActionTypes.ADD_MOVIE](
     { commit }: AugmentedActionContext,
@@ -28,8 +28,8 @@ export interface Actions {
 }
 
 export const actions: ActionTree<State, State> & Actions = {
-  async [ActionTypes.GET_MOVIES]({ commit }) {
-    const movies = await getMovies();
+  async [ActionTypes.GET_MOVIES]({ commit }, params: GetMoviesParams) {
+    const movies = await getMovies(params);
     if (movies) {
       commit(MutationTypes.GET_MOVIES, movies);
       return movies;

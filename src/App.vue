@@ -26,7 +26,11 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.store.dispatch("GET_MOVIES");
+    this.store.dispatch("GET_MOVIES", {
+      limit: 8,
+      sortedBy: "title",
+      sortOrder: "asc",
+    });
   },
 });
 </script>
